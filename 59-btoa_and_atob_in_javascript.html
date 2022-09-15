@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>btoa and atob in javascript</title>
+    <link rel="stylesheet" href="style_v5.1_bootstrap.css">
+
+    <style>
+        *{
+          padding: 0;
+          margin: 0;
+        }
+        #app {
+          width: 100%;
+          max-width: 100%;
+          margin: 20px 20px;
+
+        }
+
+        #app p{
+          width: 95%;
+          padding: 14px;
+          background: red;
+          color: white;
+          font-size: 20px;
+          font-weight: bold;
+          text-align: center;
+          font-family: sans-serif;
+          border-radius: 14px;
+          margin: 10px;
+        }
+
+        #app textarea{
+          width: 95%;
+          border: 3px solid green;
+          outline: none;
+          border-radius: 14px;
+          min-height: 150px;
+          margin: 20px 0px;
+          font-size: 20px;
+        }
+
+        #app select{
+          width: 95%;
+          padding: 15px;
+          text-align: center;
+          margin: 10px;
+          font-size: 20px;
+          background: blue;
+          color: white;
+          border-radius: 14px;
+        }
+
+        img{
+          line-height: 93px;
+          transform: translate(0% , -30%);
+        }
+        #a-1{
+          line-height: 93px;
+          transform: translate(0% , -20%);
+        }
+        #a-2{
+          line-height: 93px;
+          transform: translate(0% , -10%);
+        }
+        nav{
+          height: 100px;
+          margin-bottom: 10px;
+        }
+
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-light bg-success">
+      <div class="container-fluid">
+
+        <a href="#" id="a-1" class="navbar-brand">Abdellah Mahmoudi</a>
+
+        <a id="a-2" class="navbar-brand" href="#">
+          <img style="object-fit: contain;" src="abs.jpg" alt="" width="80" height="80" class="d-inline-block align-text-top">
+          Ethical Hacking
+        </a>
+
+      </div>
+    </nav>
+
+    <main id="app">
+      <p>Text : النص</p>
+
+      <select id="select">
+        <option value="encode">تشفير النص</option>
+        <option value="decode">فك تشفير النص</option>
+      </select>
+
+      <textarea id="text"></textarea>
+
+      <p>Result : النتيجة</p>
+
+      <textarea id="result"></textarea>
+    </main>
+
+    <div style="text-align: center;" class="card">
+
+      <div class="card-header">
+        حولنا
+      </div>
+
+      <div class="card-body">
+        <blockquote class="blockquote mb-0">
+          <p>موقع لفك نشفير البيانات بنظام قاعدة 64 - و أيضا تشفير البيانات بنظام قاعدة 64 </p>
+        </blockquote>
+      </div>
+  </div>
+
+
+    <script src="javascript_v5.1_bootstrap.js"></script>
+    <script>
+        // لتشفير البيانات الموجودة داخل المتغير
+        // text
+        // باستخدام الميتود
+        // btoa()   method
+        // و التشفير يكون بنظام 64
+        let text = "abdellah mahmoudi";
+        let encode_text = btoa(text);
+        //alert(encode_text);
+
+
+        // لفك تشفير البيانات لنظام 64 باستخدام
+        // atob()  method
+        let decode_text = atob(encode_text);
+        //alert(decode_text);
+
+
+        let textarea = document.getElementById("text");
+        let result = document.getElementById("result");
+        let select = document.getElementById("select");
+
+
+        textarea.addEventListener("input", () => {
+          make_result();
+        })
+
+        select.addEventListener("change", () => {
+          make_result();
+        })
+
+        function make_result(){
+          if (select.value == "decode") {
+            result.value = window.atob(textarea.value);
+          }
+          else {
+            result.value = window.btoa(textarea.value);
+          }
+        }
+
+
+// The btoa() method encodes a string in base-64.
+// btoa() : يتم استخدامها لتشفير بيانات النصية إلى تشفير بنظام القاعدة64
+// ----------------------------------------------------------------------------
+// This method uses the "A-Z", "a-z", "0-9", "+", "/" and "=" characters to encode the string.
+// هذا عنصر يستخدم احرف اللغة الإنجليزية , الصغيرة والكبيرة , الأرقام و علامة
+// +  و  /  و =
+// عندما يقوم بتشفير النص
+//------------------------------------------------------------------------------
+// Tip: Use the atob() method to decode a base-64 encoded string.
+// atob() : يتم استخدام هذا العنصر لفك تشفير نص مشفر بنظام قاعدة64
+    </script>
+</body>
+</html>
